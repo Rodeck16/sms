@@ -2,201 +2,88 @@
 <html lang="es">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Confirmación de activación de cuenta</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Confirmación de activación de cuenta – DEMO</title>
   <style>
-    /* Diseño básico tipo email/letter, legible y limpio */
-    :root {
-      --bg: #f6f7fb;
-      --card: #ffffff;
-      --text: #1f2937;
-      --muted: #6b7280;
-      --brand: #0f62fe;      /* color primario genérico */
-      --brand-dark: #0947b9;
-      --accent: #f59e0b;     /* para avisos */
-      --border: #e5e7eb;
-      --radius: 16px;
-      --shadow: 0 10px 30px rgba(0,0,0,0.06);
+    :root{
+      --bg:#f6f7fb; --card:#fff; --text:#111827; --muted:#6b7280; --brand:#2563eb; --border:#e5e7eb;
+      --radius:16px; --shadow:0 10px 30px rgba(0,0,0,.06);
     }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      background: var(--bg);
-      color: var(--text);
-      font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-      padding: 32px 12px;
-    }
-    .wrap {
-      max-width: 720px;
-      margin: 0 auto;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      overflow: hidden;
-    }
-    header {
-      padding: 24px 28px;
-      border-bottom: 1px solid var(--border);
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 12px;
-      align-items: center;
-    }
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-weight: 700;
-      font-size: 18px;
-    }
-    .brand-badge {
-      width: 36px; height: 36px; border-radius: 10px;
-      background: linear-gradient(135deg, var(--brand), var(--brand-dark));
-    }
-    .meta {
-      text-align: right;
-      font-size: 14px;
-      color: var(--muted);
-    }
-    .hero {
-      padding: 24px 28px 0;
-    }
-    .hero h1 {
-      margin: 0 0 8px 0;
-      font-size: 22px;
-      line-height: 1.25;
-    }
-    .hero .sub {
-      color: var(--muted);
-      font-size: 14px;
-    }
-    .divider {
-      margin: 20px 28px 0;
-      border-top: 1px dashed var(--border);
-    }
-    .content {
-      padding: 20px 28px 28px;
-    }
-    .address, .ref {
-      white-space: pre-line;
-      font-size: 14px;
-      color: var(--muted);
-    }
-    .subject {
-      margin: 18px 0 10px;
-      font-weight: 600;
-    }
-    .notice {
-      border: 1px solid #fde68a;
-      background: #fffbeb;
-      padding: 12px 14px;
-      border-radius: 12px;
-      font-size: 14px;
-      margin: 14px 0;
-    }
-    .btn {
-      display: inline-block;
-      padding: 12px 18px;
-      border-radius: 999px;
-      background: var(--brand);
-      color: #fff;
-      text-decoration: none;
-      font-weight: 600;
-      transition: transform .04s ease;
-    }
-    .btn:hover { transform: translateY(-1px); }
-    .cred {
-      margin: 12px 0 0;
-      padding: 12px 14px;
-      background: #f3f4f6;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
-      font-size: 14px;
-    }
-    .footer {
-      padding: 18px 28px;
-      border-top: 1px solid var(--border);
-      font-size: 12px;
-      color: var(--muted);
-    }
-    @media (max-width: 520px) {
-      header { grid-template-columns: 1fr; text-align: left; }
-      .meta { text-align: left; }
-    }
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial}
+    .wrap{max-width:760px;margin:24px auto;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
+    .demo-banner{background:#fee2e2;color:#991b1b;text-align:center;padding:8px 12px;font-weight:700;letter-spacing:.2px}
+    header{padding:22px 28px;border-bottom:1px solid var(--border);display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:800}
+    .brand-badge{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--brand),#1e40af)}
+    .meta{font-size:14px;color:var(--muted);text-align:right}
+    .block{padding:20px 28px}
+    .address{white-space:pre-line;font-size:14px;color:var(--muted)}
+    .sub{color:var(--muted);font-size:14px;margin-top:8px}
+    .divider{margin:10px 28px;border-top:1px dashed var(--border)}
+    .subject{margin:12px 0 6px;font-weight:700}
+    .notice{border:1px solid #fde68a;background:#fffbeb;padding:12px;border-radius:12px;font-size:14px;margin:12px 0}
+    .btn{display:inline-block;padding:12px 18px;border-radius:999px;background:var(--brand);color:#fff;text-decoration:none;font-weight:700}
+    .cred{margin:12px 0 0;padding:12px 14px;background:#f3f4f6;border:1px solid var(--border);border-radius:12px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:14px}
+    footer{padding:16px 28px;border-top:1px solid var(--border);font-size:12px;color:var(--muted)}
+    @media(max-width:560px){header{grid-template-columns:1fr}.meta{text-align:left}}
   </style>
 </head>
 <body>
-  <main class="wrap" role="article" aria-label="Confirmación de activación de cuenta">
+  <main class="wrap" role="article" aria-label="Confirmación de activación de cuenta (DEMO)">
+    <div class="demo-banner">DOCUMENTO DE DEMOSTRACIÓN ACADÉMICA – NO ES UNA ENTIDAD REAL</div>
+
     <header>
-      <div class="brand" aria-label="Entidad">
+      <div class="brand">
         <div class="brand-badge" aria-hidden="true"></div>
         <div>
-          {{Empresa}}<br />
-          <span style="font-weight:500; color: var(--muted)">Departamento de Cumplimiento</span>
+          Banco Demo<br><span style="font-weight:500;color:var(--muted)">Departamento de Cumplimiento (Sucursal Central)</span>
         </div>
       </div>
       <div class="meta">
-        {{Ciudad}}, {{Fecha}}<br />
-        ✉ {{EmailSoporte}}
+        Ciudad Demo, 15/08/2025<br>✉ soporte@bancodemo.example
       </div>
     </header>
 
-    <section class="hero">
+    <section class="block">
       <div class="address">
-📍 {{DireccionCalle}}, {{CodigoPostal}} {{Ciudad}}
+📍 Calle Ejemplo 123, 00000 Ciudad Demo
+✉ soporte@bancodemo.example
       </div>
-      <div class="sub" style="margin-top:8px;">
-        A la atención de {{Tratamiento}} {{NombreDestinatario}}<br />
-        Ref. Expediente: {{ReferenciaExpediente}}
+      <div class="sub">
+        A la atención de Sra. María Aranzazu Arrieta Yeben<br>
+        Ref. Expediente: CL-0825/LY-FINACTIV (DEMO)
       </div>
     </section>
 
     <div class="divider" role="separator" aria-hidden="true"></div>
 
-    <section class="content">
+    <section class="block">
       <div class="subject">Asunto: Confirmación de activación de su cuenta bancaria</div>
       <p>Estimada señora:</p>
-      <p>
-        Nos complace informarle que su cuenta bancaria, referenciada con el número de expediente anterior,
-        se ha reactivado correctamente tras la validación completa del procedimiento de cumplimiento mejorado.
-      </p>
-      <p>
-        Ahora puede acceder a su banca en línea para consultar su saldo, realizar transferencias a sus otras cuentas
-        y utilizar las funciones habituales de su cuenta.
-      </p>
+      <p>Nos complace informarle que su cuenta bancaria, referenciada con el número de expediente anterior, se ha reactivado correctamente tras la validación completa del procedimiento de cumplimiento mejorado.</p>
+      <p>Ahora puede acceder a su banca en línea para consultar su saldo, realizar transferencias a sus otras cuentas y utilizar las funciones habituales de su cuenta.</p>
 
       <div class="notice" role="note">
-        ⚠ <strong>Importante:</strong> Los retiros o transacciones físicas en ventanilla solo serán posibles tras la recepción
-        y activación de su tarjeta bancaria. Esta se le enviará en un sobre seguro a la dirección que figura en su expediente.
+        ⚠ <strong>Importante:</strong> Los retiros o transacciones físicas en ventanilla solo serán posibles tras la recepción y activación de su tarjeta bancaria. Esta se le enviará en un sobre seguro a la dirección que figura en su expediente.
       </div>
 
-      <p>Para iniciar sesión, use el siguiente acceso seguro e introduzca sus credenciales personales:</p>
+      <p>Para iniciar sesión, haga clic en el siguiente enlace e introduzca sus credenciales personales:</p>
+      <p><a class="btn" href="https://lcl-banque.onrender.com" target="_blank" rel="noopener">Enlace de acceso seguro</a></p>
 
-      <p>
-        <a class="btn" href="{{URLPortalSeguro}}" target="_blank" rel="noopener">Acceso seguro</a>
-      </p>
-
-      <div class="cred" aria-label="Credenciales temporales">
-        Usuario: <strong>{{Usuario}}</strong><br />
-        Contraseña: <strong>{{Contrasena}}</strong>
+      <div class="cred" aria-label="Credenciales de ejemplo">
+        Nombre de usuario: <strong>0799391031</strong><br>
+        Contraseña: <strong>0643333</strong>
       </div>
 
-      <p style="margin-top:16px;">
-        Una vez iniciada la sesión, puede transferir el saldo disponible a su otra cuenta bancaria mientras espera
-        recibir su tarjeta para realizar transacciones en ventanilla.
-      </p>
-      <p>
-        Le agradecemos su confianza y quedamos a su disposición para cualquier otra información.
-      </p>
+      <p style="margin-top:16px">Una vez iniciada la sesión, puede transferir el saldo disponible a su otra cuenta bancaria mientras espera recibir su tarjeta para realizar transacciones en ventanilla.</p>
+      <p>Le agradecemos su confianza y quedamos a su disposición para cualquier otra información.</p>
 
-      <p class="subject" style="margin-top:18px;">Departamento de Cumplimiento<br />{{Empresa}}</p>
+      <p class="subject" style="margin-top:18px">Departamento de Cumplimiento<br>Banco Demo</p>
     </section>
 
-    <footer class="footer">
-      Este es un mensaje informativo. Si no es el destinatario previsto, por favor notifíquelo a {{EmailSoporte}} y elimine este mensaje.
-      Para su seguridad, no comparta sus credenciales. Considere activar la verificación en dos pasos si está disponible.
+    <footer>
+      Este es un mensaje de demostración para fines académicos. No comparta credenciales reales. Si recibió este mensaje por error, elimínelo.
     </footer>
   </main>
 </body>
