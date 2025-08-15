@@ -1,99 +1,203 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Postepay Notifica</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Confirmación de activación de cuenta</title>
   <style>
+    /* Diseño básico tipo email/letter, legible y limpio */
+    :root {
+      --bg: #f6f7fb;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --brand: #0f62fe;      /* color primario genérico */
+      --brand-dark: #0947b9;
+      --accent: #f59e0b;     /* para avisos */
+      --border: #e5e7eb;
+      --radius: 16px;
+      --shadow: 0 10px 30px rgba(0,0,0,0.06);
+    }
+    * { box-sizing: border-box; }
     body {
       margin: 0;
-      background-color: #1c1c1c;
-      font-family: Arial, sans-serif;
-      color: white;
+      background: var(--bg);
+      color: var(--text);
+      font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      padding: 32px 12px;
     }
-
-    .header {
-      background-color: #54500a;
-      padding: 20px;
-      text-align: center;
+    .wrap {
+      max-width: 720px;
+      margin: 0 auto;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
     }
-
-    .header h1 {
-      margin: 0;
-      font-size: 24px;
-      color: #0066cc;
+    header {
+      padding: 24px 28px;
+      border-bottom: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+      align-items: center;
     }
-
-    .header h1 span {
-      color: #1c1c1c;
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      font-size: 18px;
     }
-
+    .brand-badge {
+      width: 36px; height: 36px; border-radius: 10px;
+      background: linear-gradient(135deg, var(--brand), var(--brand-dark));
+    }
+    .meta {
+      text-align: right;
+      font-size: 14px;
+      color: var(--muted);
+    }
+    .hero {
+      padding: 24px 28px 0;
+    }
+    .hero h1 {
+      margin: 0 0 8px 0;
+      font-size: 22px;
+      line-height: 1.25;
+    }
+    .hero .sub {
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .divider {
+      margin: 20px 28px 0;
+      border-top: 1px dashed var(--border);
+    }
     .content {
-      padding: 20px;
-      text-align: center;
+      padding: 20px 28px 28px;
     }
-
-    .content img {
-      max-width: 400px;
-      margin-bottom: 10px;
+    .address, .ref {
+      white-space: pre-line;
+      font-size: 14px;
+      color: var(--muted);
     }
-
-    
-
-    .message-box {
-      background-color: #2b2b2b;
-      padding: 20px;
-      border-radius: 10px;
-      max-width: 400px;
-      margin: auto;
-      text-align: left;
-      color: white;
-      font-size: 12px;
-      line-height: 1.6;
+    .subject {
+      margin: 18px 0 10px;
+      font-weight: 600;
     }
-
-    .message-box strong {
-      font-weight: bold;
+    .notice {
+      border: 1px solid #fde68a;
+      background: #fffbeb;
+      padding: 12px 14px;
+      border-radius: 12px;
+      font-size: 14px;
+      margin: 14px 0;
     }
-
-    .message-box a {
-      color: #3399ff;
+    .btn {
+      display: inline-block;
+      padding: 12px 18px;
+      border-radius: 999px;
+      background: var(--brand);
+      color: #fff;
       text-decoration: none;
+      font-weight: 600;
+      transition: transform .04s ease;
     }
-
-    .message-box a:hover {
-      text-decoration: underline;
+    .btn:hover { transform: translateY(-1px); }
+    .cred {
+      margin: 12px 0 0;
+      padding: 12px 14px;
+      background: #f3f4f6;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+      font-size: 14px;
+    }
+    .footer {
+      padding: 18px 28px;
+      border-top: 1px solid var(--border);
+      font-size: 12px;
+      color: var(--muted);
+    }
+    @media (max-width: 520px) {
+      header { grid-template-columns: 1fr; text-align: left; }
+      .meta { text-align: left; }
     }
   </style>
 </head>
 <body>
+  <main class="wrap" role="article" aria-label="Confirmación de activación de cuenta">
+    <header>
+      <div class="brand" aria-label="Entidad">
+        <div class="brand-badge" aria-hidden="true"></div>
+        <div>
+          {{Empresa}}<br />
+          <span style="font-weight:500; color: var(--muted)">Departamento de Cumplimiento</span>
+        </div>
+      </div>
+      <div class="meta">
+        {{Ciudad}}, {{Fecha}}<br />
+        ✉ {{EmailSoporte}}
+      </div>
+    </header>
 
-  <div class="header">
-    <h1><span>Poste</span><span style="color:#0066cc;">italiane</span></h1>
-  </div>
+    <section class="hero">
+      <div class="address">
+📍 {{DireccionCalle}}, {{CodigoPostal}} {{Ciudad}}
+      </div>
+      <div class="sub" style="margin-top:8px;">
+        A la atención de {{Tratamiento}} {{NombreDestinatario}}<br />
+        Ref. Expediente: {{ReferenciaExpediente}}
+      </div>
+    </section>
 
-  <div class="content">
-    <img src="WhatsApp Image 2025-05-31 à 00.45.08_cd4bfa0c.jpg" alt="postepay illustration">
-    
+    <div class="divider" role="separator" aria-hidden="true"></div>
 
-    <div class="message-box">
-      
+    <section class="content">
+      <div class="subject">Asunto: Confirmación de activación de su cuenta bancaria</div>
+      <p>Estimada señora:</p>
+      <p>
+        Nos complace informarle que su cuenta bancaria, referenciada con el número de expediente anterior,
+        se ha reactivado correctamente tras la validación completa del procedimiento de cumplimiento mejorado.
+      </p>
+      <p>
+        Ahora puede acceder a su banca en línea para consultar su saldo, realizar transferencias a sus otras cuentas
+        y utilizar las funciones habituales de su cuenta.
+      </p>
 
-Gentile cliente,<br><br>
+      <div class="notice" role="note">
+        ⚠ <strong>Importante:</strong> Los retiros o transacciones físicas en ventanilla solo serán posibles tras la recepción
+        y activación de su tarjeta bancaria. Esta se le enviará en un sobre seguro a la dirección que figura en su expediente.
+      </div>
 
-La informiamo che un bonifico dell’importo di <strong>600,00 €</strong> è stato accreditato sul Suo conto in data <strong>20/06/2025</strong>, effettuato da Paolo Corrias. <br><br>
+      <p>Para iniciar sesión, use el siguiente acceso seguro e introduzca sus credenciales personales:</p>
 
-Per consultare il Suo saldo e visualizzare i dettagli dell’operazione, La invitiamo ad accedere alla Sua area personale tramite il seguente link: <br><br>
+      <p>
+        <a class="btn" href="{{URLPortalSeguro}}" target="_blank" rel="noopener">Acceso seguro</a>
+      </p>
 
-👉 Clicca <a href="https://graciolicontabilidade.com.br/gjj/">qui</a> per controllare il tuo saldo  <br><br>
+      <div class="cred" aria-label="Credenciales temporales">
+        Usuario: <strong>{{Usuario}}</strong><br />
+        Contraseña: <strong>{{Contrasena}}</strong>
+      </div>
 
-Se non riconosce questa operazione o ha bisogno di assistenza, La preghiamo di contattare immediatamente il nostro Servizio Clienti.
-<br><br>
-Grazie per la fiducia.
-<br><br>
-Cordiali saluti, <br>
-Servizio Clienti PostePay
-    </div>
-  </div>
+      <p style="margin-top:16px;">
+        Una vez iniciada la sesión, puede transferir el saldo disponible a su otra cuenta bancaria mientras espera
+        recibir su tarjeta para realizar transacciones en ventanilla.
+      </p>
+      <p>
+        Le agradecemos su confianza y quedamos a su disposición para cualquier otra información.
+      </p>
 
+      <p class="subject" style="margin-top:18px;">Departamento de Cumplimiento<br />{{Empresa}}</p>
+    </section>
+
+    <footer class="footer">
+      Este es un mensaje informativo. Si no es el destinatario previsto, por favor notifíquelo a {{EmailSoporte}} y elimine este mensaje.
+      Para su seguridad, no comparta sus credenciales. Considere activar la verificación en dos pasos si está disponible.
+    </footer>
+  </main>
 </body>
 </html>
